@@ -1,4 +1,5 @@
 <?php
+
 /*
  
     Declaration de Variable  sont dynamiques ie pas type
@@ -19,7 +20,7 @@ $x = null; //x n'a pas encore de valeur
 
 
 //Expressions
- /*
+/*
   *Operateurs 
     Arithmetiques(+,-,*,/,%) 
     operator affectation (=)
@@ -27,16 +28,16 @@ $x = null; //x n'a pas encore de valeur
     operator Logique (and(&&), or(||),!)
   */
 
-  $x=1;
-  $y=1;
-  $z=$x+$y;//2
-  $ok=$x>$y;//false
+$x = 1;
+$y = 1;
+$z = $x + $y; //2
+$ok = $x > $y; //false
 
-  $f="1";
-  //Concateination
-  $k= $x+$f;  //$k="11";
-  $ok=$x==$y;//true
-  //operateur == est un operateur de comparaison se basant sur les valeurs et pas sur les types
-  $ok=$x==$f;//1=="1" ==>true 
- //operateur == est un operateur de comparaison se basant sur les valeurs et  sur les types
-  $ok=$x===$f;//1==="1" ==>false 
+$f = "1";
+//Concateination
+$k = $x + $f;  //$k="11";
+$ok = $x == $y; //true
+//operateur == est un operateur de comparaison se basant sur les valeurs et pas sur les types
+$ok = $x == $f; //1=="1" ==>true 
+//operateur == est un operateur de comparaison se basant sur les valeurs et  sur les types
+$ok = $x === $f;//1==="1" ==>false 
