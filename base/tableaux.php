@@ -12,14 +12,12 @@ $tableau = [1, 4.5, "Table", true];
 for ($i = 0; $i < 4; $i++) {
     printf("%d\t", $tableau[$i]);
 }
-
 //count($tableau):retourne la taille du tableau
 printf("\nNbre element du tableau %d\n", count($tableau));
 
 for ($i = 0; $i < count($tableau); $i++) {
     printf("%d\t", $tableau[$i]);
 }
-
 
 foreach ($tableau as $index => $value) {
     printf("%d\t", $value);

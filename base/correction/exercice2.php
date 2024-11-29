@@ -45,3 +45,5 @@ calcul($min, $max, $moyenne);
 printf("Min: %f\n", $min);
 printf("Max: %f\n", $max);
 printf("Moyenne: %f\n", $moyenne);
+
+
