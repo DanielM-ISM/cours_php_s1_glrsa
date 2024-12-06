@@ -1,6 +1,6 @@
 <?php 
 //Fonctions Access aux donnees
-   function selectClients():array {
+function selectClients():array {
     return
         [
             [
@@ -18,40 +18,38 @@
 
             ]
         ];
+}
 
-
-   }
-
-   function selectClientByTel(array $clients,string $tel):array|null {
-        foreach ($clients as  $client) {
-            if ($client["telephone"] == $tel) {
-               return $client;
-            }
+function selectClientByTel(array $clients,string $tel):array|null {
+    foreach ($clients as  $client) {
+        if ($client["telephone"] == $tel) {
+            return $client;
         }
-        return null;
-   }
+    }
+    return null;
+}
 
-   function insertClient(array &$tabClients,$client):void {
+function insertClient(array &$tabClients,$client):void {
           // array_push($tabClients,$client);
-           $tabClients[]=$client;
-      }
+        $tabClients[]=$client;
+}
 
 
 
 
 //Fonctions Services ou Use Case  ou Metier
-  function  enregistrerClient(array &$tabClients,array $client):bool{
-     $result=  selectClientByTel($tabClients,$client["telephone"]);
-     if (  $result==null ) {
-        insertClient($tabClients,$client);
-        return true;
-     }
-     return false;
-  }
+function  enregistrerClient(array &$tabClients,array $client):bool{
+    $result=  selectClientByTel($tabClients,$client["telephone"]);
+    if (  $result==null ) {
+    insertClient($tabClients,$client);
+    return true;
+    }
+    return false;
+}
 
-  function listerClient():array{
-      return selectClients();
-  }
+function listerClient():array{
+    return selectClients();
+}
 
 
 function estVide(string $value):bool{
@@ -67,14 +65,13 @@ function saisieChampObligatoire(string $sms):string{
     do {
         $value= readline($sms);
     } while (estVide($value));
-   return $value;
+return $value;
 }
 function telephoneIsUnique(array $clients,string $sms):string{
     do {
         $value= readline($sms);
     } while (estVide($value) || selectClientByTel($clients,$value)!=null);
     return $value;
-   
 }
 
 function afficheClient(array $clients):void{
@@ -87,7 +84,7 @@ function afficheClient(array $clients):void{
             echo "Nom : ". $client["nom"]."\t";
             echo "Prenom : ". $client["prenom"]."\t";
             echo "Adresse : ". $client["adresse"]."\t";
-      }
+    }
     }
     
 }
@@ -97,17 +94,17 @@ function afficheClient(array $clients):void{
 function saisieClient(array $clients):array{
     return [
         "telephone"=>telephoneIsUnique($clients,"Entrer le Telephone: "),
-         "nom"=>saisieChampObligatoire(" Entrer le Nom: "),
-         "prenom"=>saisieChampObligatoire(" Entrer le Prenom: "),
-         "adresse"=>saisieChampObligatoire(" Entrer l'Adresse: "),
+        "nom"=>saisieChampObligatoire(" Entrer le Nom: "),
+        "prenom"=>saisieChampObligatoire(" Entrer le Prenom: "),
+        "adresse"=>saisieChampObligatoire(" Entrer l'Adresse: "),
     ] ; 
 }
 function menu():int{
     echo "
-     1.Ajouter client \n
-     2.Lister les clients\n 
-     3.Rechercher client par telephone\n
-     4.Quitter\n";
+    1.Ajouter client \n
+    2.Lister les clients\n 
+    3.Rechercher client par telephone\n
+    4.Quitter\n";
     return (int)readline(" Faites votre choix: ");
 }
 
@@ -115,33 +112,33 @@ function menu():int{
 
 
 function principal(){
-   $clients= selectClients();
-   do {
+$clients= selectClients();
+do {
 
-      $choix= menu();
-      switch ($choix) {
-       case 1:
+    $choix= menu();
+    switch ($choix) {
+    case 1:
         $client=saisieClient($clients);
-       if (enregistrerClient($clients,  $client)) {
-           echo"Client Enregistrer avec success \n";
-       }else {
+    if (enregistrerClient($clients,  $client)) {
+        echo"Client Enregistrer avec success \n";
+    }else {
             echo"Le numero Telephone  existe deja \n";
-       } 
-       break;
-       case 2:
+    } 
+    break;
+    case 2:
         afficheClient( $clients);
-       break;
-       case 3:
-           # code...
-       break;
-       case 4:
-           # code...
-       default:
-          echo "Veullez faire un bon choix: ";
-           break;
-      }
+    break;
+    case 3:
+        # code...
+    break;
+    case 4:
+        # code...
+    default:
+        echo "Veullez faire un bon choix: ";
+        break;
+    }
 
-   } while ($choix!=4);
+} while ($choix!=4);
 }
 principal();
 
